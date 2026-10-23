@@ -36,8 +36,17 @@ export function readConfig() {
 
 function getConfigFilePath() {
   const configFileName = ".gatorconfig.json";
-  const homeDir = os.homedir();
-  return path.join(homeDir, configFileName);
+  try {
+    const homeDir = os.homedir();
+
+    if (!homeDir) {
+      throw new Error("Home directory is empty");
+    }
+
+    return path.join(homeDir, configFileName);
+  } catch {
+    throw new Error("Could not determine home directory");
+  }
 }
 
 function writeConfig(config: Config) {
@@ -51,4 +60,3 @@ function writeConfig(config: Config) {
   const data = JSON.stringify(rawConfig, null, 2);
   fs.writeFileSync(fullPath, data, { encoding: "utf-8" });
 }
-
