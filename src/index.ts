@@ -1,10 +1,23 @@
-import { readConfig, setUser } from "./config";
+import { runCommand } from "./commandRegistry";
 
 function main() {
-  setUser("Ethem");
+  try {
+    const argv = process.argv.slice(2);
 
-  const config = readConfig();
-  console.log(config);
+    if (argv.length === 0) {
+      console.error("Missing arguments");
+      console.log("Usage: <command_name>");
+      process.exit(1);
+    }
+    const [cmdName, ...args] = argv;
+
+    runCommand(cmdName, ...args);
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log(err.message);
+    }
+    process.exit(1);
+  }
 }
 
 main();
