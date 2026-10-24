@@ -1,6 +1,6 @@
 import { runCommand } from "./commandRegistry";
 
-function main() {
+async function main() {
   try {
     const argv = process.argv.slice(2);
 
@@ -11,13 +11,14 @@ function main() {
     }
     const [cmdName, ...args] = argv;
 
-    runCommand(cmdName, ...args);
+    await runCommand(cmdName, ...args);
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message);
     }
     process.exit(1);
   }
+  process.exit(0);
 }
 
 main();

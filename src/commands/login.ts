@@ -1,6 +1,9 @@
 import { setUser } from "src/config";
 
-export function loginHandler(cmdName: string, ...args: string[]) {
+export async function loginHandler(
+  cmdName: string,
+  ...args: string[]
+): Promise<void> {
   if (cmdName !== "login" || args.length === 0) {
     throw Error("Missing login arguments");
   }

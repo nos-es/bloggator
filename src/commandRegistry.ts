@@ -14,9 +14,12 @@ type Command = {
   handler: CommandHandler;
 };
 
-export type CommandHandler = (cmdName: string, ...args: string[]) => void;
+export type CommandHandler = (
+  cmdName: string,
+  ...args: string[]
+) => Promise<void>;
 
-export function runCommand(cmdName: string, ...args: string[]) {
+export async function runCommand(cmdName: string, ...args: string[]) {
   const commands = getCommands();
 
   const command = commands[cmdName];
