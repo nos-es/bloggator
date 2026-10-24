@@ -1,10 +1,15 @@
 import { loginHandler } from "./commands/login";
+import { registerHandler } from "./commands/register";
 
 function getCommands(): Record<string, Command> {
   return {
     login: {
       name: "login",
       handler: loginHandler,
+    },
+    register: {
+      name: "register",
+      handler: registerHandler,
     },
   };
 }
@@ -27,5 +32,5 @@ export async function runCommand(cmdName: string, ...args: string[]) {
   if (!command) {
     throw new Error("Command not found");
   }
-  command.handler(cmdName, ...args);
+  await command.handler(cmdName, ...args);
 }
