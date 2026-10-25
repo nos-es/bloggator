@@ -1,3 +1,4 @@
+import { fetchRSSHandler } from "./commands/agg";
 import { loginHandler } from "./commands/login";
 import { registerHandler } from "./commands/register";
 import { resetHandler } from "./commands/reset";
@@ -20,6 +21,10 @@ function getCommands(): Record<string, Command> {
     users: {
       name: "users",
       handler: usersHandler,
+    },
+    agg: {
+      name: "agg",
+      handler: fetchRSSHandler,
     },
   };
 }
