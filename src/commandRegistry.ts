@@ -1,5 +1,6 @@
 import { loginHandler } from "./commands/login";
 import { registerHandler } from "./commands/register";
+import { resetHandler } from "./commands/reset";
 
 function getCommands(): Record<string, Command> {
   return {
@@ -10,6 +11,10 @@ function getCommands(): Record<string, Command> {
     register: {
       name: "register",
       handler: registerHandler,
+    },
+    reset: {
+      name: "reset",
+      handler: resetHandler,
     },
   };
 }
