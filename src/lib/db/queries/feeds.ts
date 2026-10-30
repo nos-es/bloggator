@@ -23,3 +23,8 @@ export async function getFeedsWithUsernames() {
 
   return allFeeds;
 }
+export async function getFeedByUrl(url: string) {
+  const [feed] = await db.select().from(feeds).where(eq(feeds.url, url));
+
+  return feed;
+}
