@@ -1,5 +1,6 @@
 import { addFeedHandler } from "./commands/addfeed";
 import { fetchRSSHandler } from "./commands/agg";
+import { feedsHandler } from "./commands/feeds";
 import { loginHandler } from "./commands/login";
 import { registerHandler } from "./commands/register";
 import { resetHandler } from "./commands/reset";
@@ -30,6 +31,10 @@ function getCommands(): Record<string, Command> {
     addfeed: {
       name: "addfeed",
       handler: addFeedHandler,
+    },
+    feeds: {
+      name: "feeds",
+      handler: feedsHandler,
     },
   };
 }
