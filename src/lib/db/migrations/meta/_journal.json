@@ -15,6 +15,13 @@
       "when": 1793339606880,
       "tag": "0001_nasty_bloodstorm",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793344407687,
+      "tag": "0002_premium_mystique",
+      "breakpoints": true
     }
   ]
 }
